@@ -1,7 +1,8 @@
 <template>
-  <v-toolbar bottom> </v-toolbar>
+  <v-toolbar bottom style="width: 100%" color="#FAB3A9"></v-toolbar>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({});
 </script>
