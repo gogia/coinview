@@ -10,7 +10,6 @@
       filled
     ></v-text-field>
   </v-toolbar>
-
 </template>
 
 <script lang="ts">

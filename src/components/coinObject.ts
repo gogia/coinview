@@ -1,4 +1,4 @@
-class coin {
+export class coin {
   id: string;
   symbol: string;
   price: string;
@@ -30,12 +30,12 @@ var litecoin = new coin("Litecoin", "LTC", 241.0, -59.2, 0.5);
 //console.log(litecoin.coinDisplay());
 //console.log(bitcoin.id)
 
-console.log(JSON.stringify(bitcoin).split(":"));
+//console.log(JSON.stringify(bitcoin).split(":"));
 
 //https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript
 let arr = JSON.stringify(bitcoin)
   .split(":")
   .join(",")
   .split(",");
-console.log(arr[1]);
+//console.log(arr[1]);
 //ahahah
