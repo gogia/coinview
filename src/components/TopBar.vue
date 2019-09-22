@@ -11,11 +11,6 @@
     ></v-text-field>
   </v-toolbar>
 
-  <!--
-  <v-toolbar
-  bottom>
-  </v-toolbar>
-  -->
 </template>
 
 <script lang="ts">
