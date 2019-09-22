@@ -1,0 +1,6 @@
+PUBLISHING NOTES:
+
+yarn build
+delete current docs folder
+rename dist to docs
+add all and push!

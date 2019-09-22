@@ -1,4 +1,7 @@
-<template> </template>
+<template> 
+    <v-card>
+    </v-card>
+</template>
 
 <script lang="ts">
 import Vue from "vue";
