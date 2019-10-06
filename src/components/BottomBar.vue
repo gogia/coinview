@@ -1,9 +1,14 @@
 <template>
-  <v-toolbar bottom absolute style="margin-bottom: 2rem; width: 100%" color="#FAB3A9">
+  <v-toolbar
+    bottom
+    absolute
+    style="margin-bottom: 2rem; width: 100%"
+    color="#FAB3A9"
+  >
     <v-layout justify-center>
       <v-btn style="margin-right: 2rem" @click="coinDialog">Add Coin</v-btn>
       <v-btn style="margin-right: 2rem" @click="listDialog">List Coins</v-btn>
-      <v-btn style="margin-right: 2rem"@click="test">Options</v-btn>
+      <v-btn style="margin-right: 2rem" @click="test">Options</v-btn>
     </v-layout>
   </v-toolbar>
 </template>
@@ -19,7 +24,8 @@ export default Vue.extend({
     listDialog() {
       this.$store.commit("listMenuSet", true);
     },
-    test(){
+    
+    test() {
       console.log(this.$store.state.testCoins);
     }
   }

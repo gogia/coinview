@@ -24,7 +24,9 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="#EDC3C5" @click="multiAct" :disabled="!valid" required>Add Coin</v-btn>
+            <v-btn color="#EDC3C5" @click="multiAct" :disabled="!valid" required
+              >Add Coin</v-btn
+            >
             <!--
               <v-btn
                 color="#EDC3C5"

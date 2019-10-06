@@ -5,8 +5,10 @@
       :coinSymbol="coinSymbol[index].symbol"-->
 
       <CoinCard
-       :coinName="myCoin.name"
-       :coinSymbol="myCoin.symbol"
+        :coinName="myCoin.name"
+        :coinSymbol="myCoin.symbol"
+        :currentPrice="myCoin.price"
+        :hourChange="myCoin.hourChange"
       ></CoinCard>
     </v-flex>
   </v-container>
@@ -15,7 +17,6 @@
     <v-btn @click=testFunc>Test</v-btn>
   -->
 </template>
-
 
 <script lang="ts">
 import Vue from "vue";

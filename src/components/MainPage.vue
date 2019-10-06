@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <TopBar> </TopBar>
-    <CoinBox/>
+    <CoinBox />
     <CoinDialog />
-    <ListDialog/>
+    <ListDialog />
     <BottomBar> </BottomBar>
   </v-container>
 </template>
@@ -24,7 +24,7 @@ export default Vue.extend({
     CoinDialog,
     ListDialog,
     CoinCard,
-    CoinBox,
+    CoinBox
   }
 });
 </script>
