@@ -1,10 +1,13 @@
 <template>
 <div>
     
-    <v-flex v-for="(myCoin, index) in coinList">
-        <CoinCard
-        :coinName="coinList[index].name"
-        :coinSymbol="coinSymbol[index].symbol">
+    <v-flex v-for="(myCoin, index) in coinList"
+    :key="index">
+
+        <!--         :coinName="coinList[index].name"
+        :coinSymbol="coinSymbol[index].symbol" -->
+
+        <CoinCard>
 
         </CoinCard>
     </v-flex>
@@ -22,6 +25,9 @@ import Vue from 'vue'
 import { coin } from "./coinObject";
 import CoinCard from "./CoinCard.vue"
 export default Vue.extend({
+    components:{
+        CoinCard
+    },
 
     computed: {
         coinList: {
