@@ -1,0 +1,67 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.2
+-------------------------------------------------------------------------------
+count time : 2019-09-22 02:05:00
+count workspace : c:\Users\solaire\Desktop\coinview
+total files : 39
+total code lines : 7218
+total comment lines : 89
+total blank lines : 1233
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |           .txt|              5|              0|              1|  0.069|
+   |               |             18|              0|              3|   0.25|
+   |          .json|             91|              0|              7|    1.3|
+   |          .html|             20|              1|              0|   0.28|
+   |            .md|             23|              1|              6|   0.32|
+   |            .js|             10|             30|              0|   0.14|
+   |           .vue|            318|             29|             37|    4.4|
+   |            .ts|            101|              5|             17|    1.4|
+   |           .map|              3|              0|              0|  0.042|
+   |           .svg|              2|              0|              0|  0.028|
+   |           .css|              1|              0|              0|  0.014|
+   |          .lock|           6626|             23|           1162|     92|
+   -------------------------------------------------------------------------
+.gitignore, code is 18, comment is 0, blank is 3.
+docs\css\chunk-vendors.12303f81.css, code is 1, comment is 0, blank is 0.
+docs\favicon.ico, it is a binary file.
+docs\img\logo.07d1e22e.svg, code is 1, comment is 0, blank is 0.
+docs\index.html, code is 1, comment is 0, blank is 0.
+docs\js\about.b4084c71.js, code is 1, comment is 1, blank is 0.
+docs\js\about.b4084c71.js.map, code is 1, comment is 0, blank is 0.
+docs\js\app.4cb4b877.js, code is 1, comment is 1, blank is 0.
+docs\js\app.4cb4b877.js.map, code is 1, comment is 0, blank is 0.
+docs\js\chunk-vendors.85ac156d.js, code is 5, comment is 28, blank is 0.
+docs\js\chunk-vendors.85ac156d.js.map, code is 1, comment is 0, blank is 0.
+index.html, code is 1, comment is 0, blank is 0.
+Notes.txt, code is 5, comment is 0, blank is 1.
+package.json, code is 57, comment is 0, blank is 2.
+public\favicon.ico, it is a binary file.
+public\index.html, code is 18, comment is 1, blank is 0.
+README.md, code is 23, comment is 1, blank is 6.
+src\App.vue, code is 19, comment is 1, blank is 2.
+src\assets\logo.png, it is a binary file.
+src\assets\logo.svg, code is 1, comment is 0, blank is 0.
+src\components\BottomBar.vue, code is 22, comment is 0, blank is 2.
+src\components\CoinCard.vue, code is 8, comment is 0, blank is 1.
+src\components\CoinDialog.vue, code is 140, comment is 8, blank is 16.
+src\components\coinObject.ts, code is 23, comment is 0, blank is 4.
+src\components\HelloWorld.vue, code is 25, comment is 0, blank is 2.
+src\components\ListDialog.vue, code is 41, comment is 20, blank is 9.
+src\components\MainPage.vue, code is 29, comment is 0, blank is 2.
+src\components\TopBar.vue, code is 17, comment is 0, blank is 1.
+src\main.ts, code is 12, comment is 0, blank is 2.
+src\plugins\vuetify.ts, code is 11, comment is 0, blank is 2.
+src\router.ts, code is 16, comment is 3, blank is 2.
+src\shims-tsx.d.ts, code is 10, comment is 2, blank is 1.
+src\shims-vue.d.ts, code is 4, comment is 0, blank is 0.
+src\store.ts, code is 25, comment is 0, blank is 6.
+src\views\About.vue, code is 5, comment is 0, blank is 0.
+src\views\Home.vue, code is 12, comment is 0, blank is 2.
+tsconfig.json, code is 34, comment is 0, blank is 5.
+vue.config.js, code is 3, comment is 0, blank is 0.
+yarn.lock, code is 6626, comment is 23, blank is 1162.
+===============================================================================

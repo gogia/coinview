@@ -1,0 +1,316 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.2",
+    "workspace": "c:\\Users\\solaire\\Desktop\\coinview",
+    "linecount": [
+        {
+            "version": "0.2.2",
+            "counttime": "2019-09-22 02:05:00",
+            "filesum": 39,
+            "codesum": 7218,
+            "commentsum": 89,
+            "blanksum": 1233,
+            "statistics": {
+                ".txt": {
+                    "code": 5,
+                    "comment": 0,
+                    "blank": 1
+                },
+                "": {
+                    "code": 18,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".json": {
+                    "code": 91,
+                    "comment": 0,
+                    "blank": 7
+                },
+                ".html": {
+                    "code": 20,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".md": {
+                    "code": 23,
+                    "comment": 1,
+                    "blank": 6
+                },
+                ".js": {
+                    "code": 10,
+                    "comment": 30,
+                    "blank": 0
+                },
+                ".vue": {
+                    "code": 318,
+                    "comment": 29,
+                    "blank": 37
+                },
+                ".ts": {
+                    "code": 101,
+                    "comment": 5,
+                    "blank": 17
+                },
+                ".map": {
+                    "code": 3,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".svg": {
+                    "code": 2,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".css": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".lock": {
+                    "code": 6626,
+                    "comment": 23,
+                    "blank": 1162
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\css\\chunk-vendors.12303f81.css"
+                },
+                {
+                    "filename": "docs\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\img\\logo.07d1e22e.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "docs\\js\\about.b4084c71.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\js\\about.b4084c71.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "docs\\js\\app.4cb4b877.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\js\\app.4cb4b877.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 28,
+                    "filename": "docs\\js\\chunk-vendors.85ac156d.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "docs\\js\\chunk-vendors.85ac156d.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "Notes.txt"
+                },
+                {
+                    "blank": 2,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "filename": "public\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "public\\index.html"
+                },
+                {
+                    "blank": 6,
+                    "code": 23,
+                    "comment": 1,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 2,
+                    "code": 19,
+                    "comment": 1,
+                    "filename": "src\\App.vue"
+                },
+                {
+                    "filename": "src\\assets\\logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "src\\assets\\logo.svg"
+                },
+                {
+                    "blank": 2,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "src\\components\\BottomBar.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\components\\CoinCard.vue"
+                },
+                {
+                    "blank": 16,
+                    "code": 140,
+                    "comment": 8,
+                    "filename": "src\\components\\CoinDialog.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "src\\components\\coinObject.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "src\\components\\HelloWorld.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 41,
+                    "comment": 20,
+                    "filename": "src\\components\\ListDialog.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "src\\components\\MainPage.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "src\\components\\TopBar.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\main.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\plugins\\vuetify.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 3,
+                    "filename": "src\\router.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 2,
+                    "filename": "src\\shims-tsx.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "src\\shims-vue.d.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "src\\store.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\views\\About.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "src\\views\\Home.vue"
+                },
+                {
+                    "blank": 5,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "vue.config.js"
+                },
+                {
+                    "blank": 1162,
+                    "code": 6626,
+                    "comment": 23,
+                    "filename": "yarn.lock"
+                }
+            ]
+        }
+    ]
+}
