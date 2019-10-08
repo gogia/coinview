@@ -1,17 +1,19 @@
 <template>
-  <v-container grid-list>
-    <v-flex v-for="(myCoin, index) in coinList" :key="index">
-      <!--         :coinName="coinList[index].name"
-      :coinSymbol="coinSymbol[index].symbol"-->
 
-      <CoinCard
+  <v-container grid-list>
+    <v-layout wrap fluid>
+    <v-flex v-for="(myCoin, index) in coinList" :key="index">
+            <CoinCard
         :coinName="myCoin.name"
         :coinSymbol="myCoin.symbol"
         :currentPrice="myCoin.price"
         :hourChange="myCoin.hourChange"
       ></CoinCard>
-    </v-flex>
+        </v-flex>
+            </v-layout>
   </v-container>
+
+
 
   <!--
     <v-btn @click=testFunc>Test</v-btn>

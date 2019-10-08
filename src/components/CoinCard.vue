@@ -1,7 +1,7 @@
 <template>
   <v-card
     outlined
-    style="margin-right: 4rem; margin-top: 2rem;"
+    style="margin-top: 2rem;"
     height="20rem"
     width="17rem"
   >

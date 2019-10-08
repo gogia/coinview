@@ -1,10 +1,10 @@
 <template>
-  <v-toolbar color="#FAB3A9" style="margin-top: 2rem">
+  <v-toolbar color="#FAB3A9" style="margin-top: 2rem; width: 100%">
     <v-spacer />
     <v-spacer />
     <v-text-field
       label="Search"
-      style="margin-top: 2rem"
+      style="margin-top: 2rem; width: 20%"
       clearable
       clear-icon="mdi-close"
       filled
