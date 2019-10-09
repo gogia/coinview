@@ -4,7 +4,7 @@
     <v-spacer />
     <v-text-field
       label="Search"
-      style="margin-top: 2rem; width: 20%"
+      style="margin-top: 2rem; width: 1rem"
       clearable
       clear-icon="mdi-close"
       filled

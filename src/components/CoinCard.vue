@@ -22,14 +22,5 @@ export default Vue.extend({
     dailyChange: Number
   }
 
-  /*
-   data: () => ({ 
-    coinName: String,
-    coinSymbol: String,
-    currentPrice: Number,
-    hourChange: Number,
-    dailyChange: Number
-   }),
-  */
 });
 </script>
