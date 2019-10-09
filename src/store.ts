@@ -23,7 +23,20 @@ export default new Vuex.Store({
 
     pushCoin: (state, newCoin: coin) => {
       state.testCoins.push(newCoin);
-    }
+    },
+
+    updateStats: (state, statCoin: coin) => {
+      const index = state.testCoins.findIndex((x) => x.id === statCoin.id);
+      state.testCoins[index].price = statCoin.price;
+      state.testCoins[index].hourChange = statCoin.hourChange;
+      state.testCoins[index].dailyChange = statCoin.dailyChange;
+    },
+
+    
+
+
+
+
   },
   actions: {}
 });

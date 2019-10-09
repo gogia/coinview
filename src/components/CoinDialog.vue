@@ -103,7 +103,7 @@ export default Vue.extend({
         !this.$store.state.testCoins.some((item: any) => item.id === myCoin.id)
       ) {
         this.$store.commit("pushCoin", myCoin);
-        //this.interval();
+        this.interval();
       } else {
         this.textCode = 2;
       }
@@ -125,6 +125,72 @@ export default Vue.extend({
       }
       this.inputMessage = "";
     },
+
+    
+    //Test Code
+    updateWrapper: async function() {
+      this.$store.state.testCoins.forEach((element: coin) => {
+        this.coinUpdate(element);
+      });
+    },
+
+    coinUpdate: async function(myCoin: coin) {
+      const CoinGecko = require('coingecko-api');
+      const CoinGeckoClient = new CoinGecko();
+      const coinDat = await CoinGeckoClient.coins.fetch(
+        myCoin.id.toLowerCase().toString(),
+      );
+      const index = this.$store.state.testCoins.findIndex(
+        (x: coin) => x.id === myCoin.id,
+      );
+
+      const coinyBoi = new coin(
+        coinDat.data.name,
+        coinDat.data.id,
+        coinDat.data.symbol.toUpperCase(),
+        coinDat.data.market_data.current_price.usd,
+        coinDat.data.market_data.price_change_percentage_1h_in_currency.usd,
+        coinDat.data.market_data.price_change_percentage_24h,
+      );
+    
+      this.$store.commit('updateStats', coinyBoi);
+      console.log("STATS UPDATED");
+    },
+
+    // Calculates an update time for setInterval that doesn't break API rate limiting rules.
+    //THIS CODE NEEDS TO BE REWRITTEN MAKES TOO MANY API CALLS!
+    optimizeTime(): number {
+      let time = 1;
+      let callsPerMinute = (60 / time) * this.$store.state.testCoins.length;
+
+      while (callsPerMinute >= 90) {
+        callsPerMinute = (60 / time) * this.$store.state.testCoins.length;
+        time++;
+      }
+      return time * 1200;
+      //console.log(`CALLS PER MINUTE: ${callsPerMinute}`);
+    },
+
+    interval() {
+      let intr;
+      switch (this.$store.state.testCoins.length) {
+        case 0: {
+          clearInterval(intr);
+          break;
+        }
+        case 1: {
+          intr = setInterval(() => this.updateWrapper(), this.optimizeTime());
+          break;
+        }
+        default: {
+          clearInterval(intr);
+          intr = setInterval(() => this.updateWrapper(), this.optimizeTime());
+          break;
+        }
+      }
+      },
+    //END TEST CODE
+    
 
     multiAct() {
       this.coinSearch(this.inputMessage);
@@ -161,6 +227,8 @@ export default Vue.extend({
       const msg = ["Coin Name", "Invalid Coin", "Duplicate Coin"];
       return msg[textCode];
     }
+
+
   }
 });
 </script>
