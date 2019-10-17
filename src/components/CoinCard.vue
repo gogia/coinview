@@ -17,13 +17,17 @@
 <script lang="ts">
 import Vue from "vue";
 
+
+//If Number(this.hourChange) = 0 css color blue
+//If Number(this.hourChange) > 0 css color green
+//If Number(this.hourChange) < 0 css color red
 export default Vue.extend({
   props: {
     coinName: String,
     coinSymbol: String,
-    currentPrice: Number,
-    hourChange: Number,
-    dailyChange: Number
+    currentPrice: String,
+    hourChange: String,
+    dailyChange: String
   }
 
 });

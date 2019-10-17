@@ -2,17 +2,18 @@
   <v-dialog v-model="$store.state.listMenu" persistent max-width="600px">
     <v-card dark>
       <v-container>
-        <v-list>
-          <template v-for="item in $store.state.testCoins">
-            <v-list-tile :key="item.id" ripple @click="coinDelete(item)">
+        <v-layout flex wrap>
+          <!-- <template v-for="item in $store.state.testCoins"> -->
+            <v-flex xs6 v-for="(item, index) in  $store.state.testCoins" :key="index">
+            <v-list-tile ripple @click="coinDelete(item)">
               <v-list-tile-content>
                 <v-list-tile-title>{{
                   `${item.name} | ${item.symbol}`
                 }}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-          </template>
-        </v-list>
+            </v-flex>
+        </v-layout>
       </v-container>
       <v-container grid-list-md>
         <v-card-actions>

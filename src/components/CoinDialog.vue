@@ -160,14 +160,9 @@ export default Vue.extend({
     // Calculates an update time for setInterval that doesn't break API rate limiting rules.
     //THIS CODE NEEDS TO BE REWRITTEN MAKES TOO MANY API CALLS!
     optimizeTime(): number {
-      let time = 1;
-      let callsPerMinute = (60 / time) * this.$store.state.testCoins.length;
-
-      while (callsPerMinute >= 90) {
-        callsPerMinute = (60 / time) * this.$store.state.testCoins.length;
-        time++;
-      }
-      return time * 1200;
+      let time = 0;
+      time = Math.floor((90*this.$store.state.testCoins.length)/60) * 1100;
+      return time ;
       //console.log(`CALLS PER MINUTE: ${callsPerMinute}`);
     },
 

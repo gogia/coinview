@@ -1,18 +1,17 @@
- 
+ //Only allow 90 coins in coinList
 console.log(optimizeTime());
 
 
 function optimizeTime(): number {
     let time = 1;
-    let callsPerMinute = (60 / time) * 8;
+    let numCoins = 1;
 
-    while (callsPerMinute >= 90) {
-      callsPerMinute = (60 / time) * 8;
-      time++;
-    }
-    
-    console.log(Math.floor(time * 1000 /60));
-    return time * 1000;
+    let callsPerMinute;
+
+    callsPerMinute = 60/ (90/numCoins);
+    console.log(callsPerMinute);
+
+    return ;
 
 
     //console.log(`CALLS PER MINUTE: ${callsPerMinute}`);
