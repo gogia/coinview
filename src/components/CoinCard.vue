@@ -2,18 +2,17 @@
   <v-card
     outlined
     style="margin-top: 2rem;"
-    height="20rem"
-    width="17rem"
+    height="15rem"
+    width="30rem"
   >
   <v-layout justify-center>
     <v-card-title>{{ this.coinName }} | {{ this.coinSymbol }}</v-card-title>
   </v-layout>
     <v-layout justify-center>
     <span>{{ this.currentPrice }}  |  {{ this.hourChange }} </span>
-    <v-btn @click="test">TEST</v-btn>
     </v-layout>
     <v-layout>
-    <v-sparkline
+      <!-- 
     :value="this.marketDat"
     :gradient="gradient"
     :smooth="radius || false"
@@ -25,7 +24,22 @@
     :type="type"
     :auto-line-width="autoLineWidth"
     auto-draw
+
+        -->
+    <v-card-text>
+    <v-sparkline
+    :value="this.marketDat"
+    :gradient="gradient"
+    :smooth="radius || false"
+    :padding="padding"
+    :line-width="width"
+    :stroke-linecap="lineCap"
+    :gradient-direction="gradientDirection"
+    :fill="fill"
+    :type="type"
+    :auto-line-width="autoLineWidth"
   ></v-sparkline>
+  </v-card-text>
     </v-layout>
   </v-card>
 </template>
@@ -59,6 +73,7 @@ export default Vue.extend({
   },
 
   data: () => ({
+
       width: 2,
       radius: 10,
       padding: 8,
@@ -67,17 +82,23 @@ export default Vue.extend({
       //value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
       gradientDirection: 'top',
       //gradients,
-      fill: false,
+      fill: true,
       type: 'trend',
       autoLineWidth: false,
+      testArr: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
     }),
 
 
   methods: {
     test(){
       console.log("CREATED");
-      console.log(this.marketDat);
+      console.log(this.testArr);
+    },
+
+    created(){
+            //this.testArr = this.marketDat;
     }
+
   }
 
 });

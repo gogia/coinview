@@ -9,7 +9,6 @@ export default new Vuex.Store({
     listMenu: false,
 
     testCoins: [] as coin[],
-    tempArray: [] as number[],
 
   },
   mutations: {
@@ -34,18 +33,6 @@ export default new Vuex.Store({
       state.testCoins[index].dailyChange = statCoin.dailyChange;
       state.testCoins[index].marketDat = statCoin.marketDat;
     },
-
-    arrayGen: (state, coin: coin) => {
-      state.tempArray = coin.marketDat;
-    },
-
-    arrayClear: (state) => {
-      state.tempArray.length = 0;
-    },
-
-    
-
-
 
 
   },
