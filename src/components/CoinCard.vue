@@ -75,10 +75,10 @@ export default Vue.extend({
   data: () => ({
 
       width: 2,
-      radius: 10,
+      radius: 3,
       padding: 8,
       lineCap: 'round',
-      gradient: ['#f72047', '#ffd200', '#1feaea'],
+      gradient: ['#00c6ff', '#F0F', '#FF0'],
       //value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
       gradientDirection: 'top',
       //gradients,
