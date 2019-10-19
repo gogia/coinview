@@ -72,29 +72,53 @@ export default Vue.extend({
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.fetch(myCoin.toLowerCase());
+      
+      // fetchMarketChart(myCoin.toLowerCase(), {days: "max"}) can do 1, 7, 14 or max
+      // can iterate over this list and grab a list of numbers for data.
+      // starts from last date and moves to current. this is good for how we can put it into an array.
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.toLowerCase());
+      let priceArr = this.marketData(priceLog);
+      //console.log("TICKERS");
+      //console.log(priceLog);
       if (coinDat.success === false) {
         this.coinVert(myCoin);
         this.inputMessage = "";
         this.resetValidation();
       } else {
-        const coinyBoi = this.coinMint(coinDat);
-
+        const coinyBoi = this.coinMint(coinDat, priceArr);
         this.dupeCheck(coinyBoi);
       }
     },
 
     // only coinDat should be passed in
-    coinMint(coinData: any): coin {
+    coinMint(coinData: any, priceArr: number []): coin {
       const coinyBoi = new coin(
         coinData.data.name,
         coinData.data.id,
         coinData.data.symbol.toUpperCase(),
         coinData.data.market_data.current_price.usd,
         coinData.data.market_data.price_change_percentage_1h_in_currency.usd,
-        coinData.data.market_data.price_change_percentage_24h
+        coinData.data.market_data.price_change_percentage_24h,
+        priceArr
       );
-      console.log(coinData.data.name);
+      console.log("COIN MINTED");
+      console.log(coinyBoi);
+      //this.$store.commit("arrayGen")
       return coinyBoi;
+    },
+
+    // youll have to add arguments to this for date and shit
+    marketData(priceLog: any){
+      var priceArr:number[] = [];
+      //console.log(priceArr);
+      //console.log(priceLog);
+      
+      priceLog.data.prices.forEach((element: any) => {
+        priceArr.push(element[1]);        
+      });
+      //console.log("THIS IS THE PRICE ARRAY");
+      //console.log(priceArr);
+      return priceArr;
     },
 
     // Final test before putting a coin into store.
@@ -103,6 +127,7 @@ export default Vue.extend({
         !this.$store.state.testCoins.some((item: any) => item.id === myCoin.id)
       ) {
         this.$store.commit("pushCoin", myCoin);
+        console.log(myCoin);
         this.interval();
       } else {
         this.textCode = 2;
@@ -116,6 +141,8 @@ export default Vue.extend({
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.list();
+
+      
 
       if (!coinDat.data.find((x: any) => x.symbol === mySymbol)) {
         this.textCode = 1;
@@ -140,6 +167,8 @@ export default Vue.extend({
       const coinDat = await CoinGeckoClient.coins.fetch(
         myCoin.id.toLowerCase().toString(),
       );
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.id);
+      let priceArr = this.marketData(priceLog);
       const index = this.$store.state.testCoins.findIndex(
         (x: coin) => x.id === myCoin.id,
       );
@@ -151,17 +180,19 @@ export default Vue.extend({
         coinDat.data.market_data.current_price.usd,
         coinDat.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinDat.data.market_data.price_change_percentage_24h,
+        priceArr
       );
     
       this.$store.commit('updateStats', coinyBoi);
       console.log("STATS UPDATED");
+      console.log(coinyBoi);
     },
 
     // Calculates an update time for setInterval that doesn't break API rate limiting rules.
     //THIS CODE NEEDS TO BE REWRITTEN MAKES TOO MANY API CALLS!
     optimizeTime(): number {
       let time = 0;
-      time = Math.floor((90*this.$store.state.testCoins.length)/60) * 1100;
+      time = Math.floor((90*this.$store.state.testCoins.length)/60) * 1750;
       return time ;
       //console.log(`CALLS PER MINUTE: ${callsPerMinute}`);
     },

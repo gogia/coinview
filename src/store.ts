@@ -8,7 +8,9 @@ export default new Vuex.Store({
     coinMenu: false,
     listMenu: false,
 
-    testCoins: [] as coin[]
+    testCoins: [] as coin[],
+    tempArray: [] as number[],
+
   },
   mutations: {
     menuSet: (state, payload: boolean) => (state.coinMenu = payload),
@@ -30,6 +32,15 @@ export default new Vuex.Store({
       state.testCoins[index].price = statCoin.price;
       state.testCoins[index].hourChange = statCoin.hourChange;
       state.testCoins[index].dailyChange = statCoin.dailyChange;
+      state.testCoins[index].marketDat = statCoin.marketDat;
+    },
+
+    arrayGen: (state, coin: coin) => {
+      state.tempArray = coin.marketDat;
+    },
+
+    arrayClear: (state) => {
+      state.tempArray.length = 0;
     },
 
     

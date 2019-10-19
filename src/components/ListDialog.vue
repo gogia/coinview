@@ -5,7 +5,7 @@
         <v-layout flex wrap>
           <!-- <template v-for="item in $store.state.testCoins"> -->
             <v-flex xs6 v-for="(item, index) in  $store.state.testCoins" :key="index">
-            <v-list-tile ripple @click="coinDelete(item)">
+            <v-list-tile style="margin-top: 2rem" ripple @click="coinDelete(item)">
               <v-list-tile-content>
                 <v-list-tile-title>{{
                   `${item.name} | ${item.symbol}`

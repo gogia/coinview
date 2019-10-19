@@ -8,6 +8,7 @@
         :coinSymbol="myCoin.symbol"
         :currentPrice="myCoin.price"
         :hourChange="myCoin.hourChange"
+        :marketDat="myCoin.marketDat"
       ></CoinCard>
         </v-flex>
             </v-layout>
