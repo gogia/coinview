@@ -1,6 +1,6 @@
 <template>
 
-  <v-container grid-list>
+  <v-container grid-list style="margin-top: 4rem">
     <v-layout wrap fluid>
     <v-flex v-for="(myCoin, index) in coinList" :key="index">
             <CoinCard

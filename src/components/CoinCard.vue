@@ -9,7 +9,8 @@
     <v-card-title>{{ this.coinName }} | {{ this.coinSymbol }}</v-card-title>
   </v-layout>
     <v-layout justify-center>
-    <span>{{ this.currentPrice }}  |  {{ this.hourChange }} </span>
+
+    <span>{{ this.currentPrice}}</span><span style="margin-left:1rem; margin-right:1rem">|</span>  <span :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
     </v-layout>
     <v-layout>
       <!-- 
@@ -93,6 +94,18 @@ export default Vue.extend({
     test(){
       console.log("CREATED");
       console.log(this.testArr);
+    },
+
+    colorizer(item: string){
+      var num = Number(item.substring(0, item.length - 1));
+      console.log(num);
+      if(num == 0){
+        return "color: #FAA613"
+      } if(num > 0){
+        return "color: #688E26"
+      }if (num < 0){
+        return "color: #FAB3A9"
+      }
     },
 
     created(){

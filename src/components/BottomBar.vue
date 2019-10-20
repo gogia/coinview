@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar
+  <v-app-bar
     bottom
     absolute
     style="margin-bottom: 2rem; width: 100%"
@@ -10,7 +10,7 @@
       <v-btn style="margin-right: 2rem" @click="listDialog">List Coins</v-btn>
       <v-btn style="margin-right: 2rem" @click="test">Options</v-btn>
     </v-layout>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script lang="ts">

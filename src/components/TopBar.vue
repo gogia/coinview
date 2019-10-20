@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar color="#FAB3A9" style="margin-top: 2rem; width: 100%">
+  <v-app-bar absolute color="#FAB3A9" fluid style="margin-top: 2rem; margin-bottom: 6rem">
     <v-spacer />
     <v-spacer />
     <v-text-field
@@ -9,7 +9,7 @@
       clear-icon="mdi-close"
       filled
     ></v-text-field>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script lang="ts">
