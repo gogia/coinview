@@ -6,11 +6,10 @@
     width="30rem"
   >
   <v-layout justify-center>
-    <v-card-title>{{ this.coinName }} | {{ this.coinSymbol }}</v-card-title>
+    <v-card-title><span>{{ this.coinName }}</span> <span style="margin-left:1rem; margin-right:1rem"></span> <span>{{ this.coinSymbol }}</span></v-card-title>
   </v-layout>
     <v-layout justify-center>
-
-    <span>{{ this.currentPrice}}</span><span style="margin-left:1rem; margin-right:1rem">|</span>  <span :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
+    <span>{{ this.currentPrice}}</span> <span style="margin-left:.5rem; margin-right:.5rem"></span> <span :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
     </v-layout>
     <v-layout>
       <!-- 
