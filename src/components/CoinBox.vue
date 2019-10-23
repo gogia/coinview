@@ -1,8 +1,8 @@
 <template>
 
-  <v-container grid-list style="margin-top: 4rem">
-    <v-layout wrap fluid>
-    <v-flex v-for="(myCoin, index) in coinList" :key="index">
+  <v-container grid-list fluid style="margin-top: 4rem;">
+    <v-layout justify-center wrap fluid>
+    <v-flex justify-center v-for="(myCoin, index) in coinList" :key="index">
             <CoinCard
         :coinName="myCoin.name"
         :coinSymbol="myCoin.symbol"

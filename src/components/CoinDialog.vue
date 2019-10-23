@@ -76,7 +76,7 @@ export default Vue.extend({
       // fetchMarketChart(myCoin.toLowerCase(), {days: "max"}) can do 1, 7, 14 or max
       // can iterate over this list and grab a list of numbers for data.
       // starts from last date and moves to current. this is good for how we can put it into an array.
-      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.toLowerCase());
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.toLowerCase(), {days: this.$store.state.daySelect});
       let priceArr = this.marketData(priceLog);
       //console.log("TICKERS");
       //console.log(priceLog);
@@ -142,8 +142,6 @@ export default Vue.extend({
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.list();
 
-      
-
       if (!coinDat.data.find((x: any) => x.symbol === mySymbol)) {
         this.textCode = 1;
       } else {
@@ -167,7 +165,7 @@ export default Vue.extend({
       const coinDat = await CoinGeckoClient.coins.fetch(
         myCoin.id.toLowerCase().toString(),
       );
-      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.id);
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.id, {days: this.$store.state.daySelect});
       let priceArr = this.marketData(priceLog);
       const index = this.$store.state.testCoins.findIndex(
         (x: coin) => x.id === myCoin.id,

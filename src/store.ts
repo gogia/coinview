@@ -7,6 +7,9 @@ export default new Vuex.Store({
   state: {
     coinMenu: false,
     listMenu: false,
+    optionMenu: false,
+
+    daySelect: '1',
 
     testCoins: [] as coin[],
 
@@ -14,6 +17,9 @@ export default new Vuex.Store({
   mutations: {
     menuSet: (state, payload: boolean) => (state.coinMenu = payload),
     listMenuSet: (state, payload: boolean) => (state.listMenu = payload),
+    optionMenuSet: (state, payload: boolean) => (state.optionMenu = payload),
+
+    daySet: (state, payload: string) => (state.daySelect = payload),
 
     popCoin: (state, pc: coin) => {
       const index = state.testCoins.findIndex(x => x === pc);

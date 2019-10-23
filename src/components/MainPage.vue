@@ -1,9 +1,12 @@
 <template>
   <v-container fluid>
+    <!--
     <TopBar> </TopBar>
+    -->
     <CoinBox />
     <CoinDialog />
     <ListDialog />
+    <OptionDialog/>
     <BottomBar> </BottomBar>
   </v-container>
 </template>
@@ -14,8 +17,10 @@ import TopBar from "./TopBar.vue";
 import BottomBar from "./BottomBar.vue";
 import CoinDialog from "./CoinDialog.vue";
 import ListDialog from "./ListDialog.vue";
+import OptionDialog from "./OptionDialog.vue"
 import CoinCard from "./CoinCard.vue";
 import CoinBox from "./CoinBox.vue";
+
 
 export default Vue.extend({
   components: {
@@ -23,6 +28,7 @@ export default Vue.extend({
     BottomBar,
     CoinDialog,
     ListDialog,
+    OptionDialog,
     CoinCard,
     CoinBox
   }

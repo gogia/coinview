@@ -8,7 +8,7 @@
     <v-layout justify-center>
       <v-btn style="margin-right: 2rem" @click="coinDialog">Add Coin</v-btn>
       <v-btn style="margin-right: 2rem" @click="listDialog">List Coins</v-btn>
-      <v-btn style="margin-right: 2rem" @click="test">Options</v-btn>
+      <v-btn style="margin-right: 2rem" @click="optionDialog">Options</v-btn>
     </v-layout>
   </v-app-bar>
 </template>
@@ -23,6 +23,10 @@ export default Vue.extend({
 
     listDialog() {
       this.$store.commit("listMenuSet", true);
+    },
+
+    optionDialog(){
+      this.$store.commit("optionMenuSet", true);
     },
     
     test() {
