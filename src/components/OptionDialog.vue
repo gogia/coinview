@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model="$store.state.optionMenu" persistent max-width="600px">
     <v-card dark>
-        <v-layout justify-center>
-        <v-container fluid>
+      <v-card-text>
+        <v-layout justify-center align-center>
         <v-overflow-btn
         :items="timeChoice"
         label="Time Range Select"
@@ -12,8 +12,8 @@
         style="width: 50%"
         >
         </v-overflow-btn>
-        </v-container>
         </v-layout>
+      </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="#EDC3C5" @click="optionClose">Close</v-btn>

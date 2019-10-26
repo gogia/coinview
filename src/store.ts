@@ -8,6 +8,7 @@ export default new Vuex.Store({
     coinMenu: false,
     listMenu: false,
     optionMenu: false,
+    coinOptionMenu: false,
 
     daySelect: '1',
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     menuSet: (state, payload: boolean) => (state.coinMenu = payload),
     listMenuSet: (state, payload: boolean) => (state.listMenu = payload),
     optionMenuSet: (state, payload: boolean) => (state.optionMenu = payload),
+    coinOptionMenuSet: (state, payload: boolean) => (state.coinOptionMenu = payload), 
 
     daySet: (state, payload: string) => (state.daySelect = payload),
 
@@ -39,6 +41,12 @@ export default new Vuex.Store({
       state.testCoins[index].dailyChange = statCoin.dailyChange;
       state.testCoins[index].marketDat = statCoin.marketDat;
     },
+
+    /* This needs an object to set things to.
+    updateCoinsHeld: (state, statCoin: coin) => {
+
+    },
+    */
 
 
   },

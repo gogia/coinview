@@ -1,16 +1,25 @@
 <template>
-  <v-card outlined style="margin-top: 2rem;" height="15rem" width="30rem">
+  <v-card
+    outlined
+    style="margin-top: 2rem;"
+    height="16rem"
+    width="30rem"
+    @click="coinOptionMenuOpen"
+  >
     <v-layout justify-center>
       <v-card-title>
-        <span>{{ this.coinName }}</span>
+        <span class="disable-select">{{ this.coinName }}</span>
         <span style="margin-left:1rem; margin-right:1rem"></span>
-        <span>{{ this.coinSymbol }}</span>
+        <span class="disable-select">{{ this.coinSymbol }}</span>
       </v-card-title>
     </v-layout>
     <v-layout justify-center>
-      <span>{{ this.currentPrice}}</span>
+      <span class="disable-select">{{ this.currentPrice}}</span>
       <span style="margin-left:.5rem; margin-right:.5rem"></span>
-      <span :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
+      <span class="disable-select" :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
+    </v-layout>
+    <v-layout justify-center>
+          <span class="disable-select"> PlaceHolder Count: $9000 </span> 
     </v-layout>
     <v-layout>
       <v-card-text>
@@ -70,13 +79,17 @@ export default Vue.extend({
     fill: true,
     type: "trend",
     autoLineWidth: false,
-    testArr: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+    testArr: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]
   }),
 
   methods: {
     test() {
       console.log("CREATED");
       console.log(this.testArr);
+    },
+
+    coinOptionMenuOpen() {
+      this.$store.commit("coinOptionMenuSet", true);
     },
 
     colorizer(item: string) {
@@ -98,3 +111,14 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style scoped>
+
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+</style>
