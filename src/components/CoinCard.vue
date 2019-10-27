@@ -19,7 +19,9 @@
       <span class="disable-select" :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
     </v-layout>
     <v-layout justify-center>
-          <span class="disable-select"> PlaceHolder Count: $9000 </span> 
+          <span v-if="getCoinsHeld != 0" class="disable-select">{{getCoinsHeld}}</span>
+          <span v-if="getCoinsHeld != 0" style="margin-left:.5rem; margin-right:.5rem"></span>
+          <span v-if="getCoinsHeld != 0" class="disable-select">{{(getCoinsHeld * Number(this.currentPrice.slice(1))).toFixed(2)}}</span> 
     </v-layout>
     <v-layout>
       <v-card-text>
@@ -42,6 +44,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { coin } from "./coinObject";
 
 /*
   const gradients = [
@@ -64,7 +67,7 @@ export default Vue.extend({
     currentPrice: String,
     hourChange: String,
     dailyChange: String,
-    marketDat: Array
+    marketDat: Array,
   },
 
   data: () => ({
@@ -82,10 +85,16 @@ export default Vue.extend({
     testArr: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]
   }),
 
+  computed: {
+    getCoinsHeld(){
+      let index = this.$store.state.testCoins.findIndex((x: coin) => x.name === this.coinName);
+      return this.$store.state.testCoins[index].coinsHeld;
+    }
+  },
+
   methods: {
     test() {
-      console.log("CREATED");
-      console.log(this.testArr);
+      console.log(Number(this.currentPrice.slice(0)));
     },
 
     coinOptionMenuOpen() {
@@ -105,6 +114,7 @@ export default Vue.extend({
         return "color: #FAB3A9";
       }
     },
+
 
     created() {
       //this.testArr = this.marketDat;

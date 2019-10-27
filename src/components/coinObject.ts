@@ -6,7 +6,7 @@ export class coin {
   hourChange: string;
   dailyChange: string;
   marketDat: number[];
-  //coinsHeld: number;
+  coinsHeld: number;
 
   constructor(
     name: string,
@@ -16,7 +16,7 @@ export class coin {
     hourChange: number,
     dailyChange: number,
     marketDat: number[],
-    //coinsHeld: number,
+    coinsHeld: number,
   ) {
     this.name = name;
     this.id = id;
@@ -29,7 +29,7 @@ export class coin {
     this.hourChange = `${hourChange.toFixed(2)}%`;
     this.dailyChange = `${dailyChange.toFixed(2)}%`;
     this.marketDat = marketDat;
-    //this.coinsHeld = 0;
+    this.coinsHeld = 0;
   }
 
   public coinDisplay() {

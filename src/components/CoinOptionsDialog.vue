@@ -22,7 +22,7 @@
       <v-card-actions>
         <v-btn @click="remove">Remove Coin</v-btn>
         <v-spacer></v-spacer>
-        <v-btn>Update Coins Held</v-btn>
+        <v-btn @click="addCoinsHeld">Update Coins Held</v-btn>
         <v-btn color="#EDC3C5" @click="coinOptionClose">Close</v-btn>
       </v-card-actions>
     </v-card>
@@ -42,6 +42,12 @@ export default Vue.extend({
     coinOptionClose() {
       this.$store.commit("coinOptionMenuSet", false);
       this.$store.commit("coinOptionSelectedClear");
+    },
+
+    addCoinsHeld(){
+        this.$store.commit("setCoinsHeld", this.coinsHeld);
+        this.$store.commit("updateCoinsHeld", this.$store.state.coinOptionSelected);
+        this.$store.commit("clearCoinsHeld");
     },
 
     remove(){

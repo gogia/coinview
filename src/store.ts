@@ -50,11 +50,20 @@ export default new Vuex.Store({
       state.testCoins[index].marketDat = statCoin.marketDat;
     },
 
-    /* This needs an object to set things to.
-    updateCoinsHeld: (state, statCoin: coin) => {
 
+    setCoinsHeld: (state, payload: number) => {
+      state.coinsHeld = payload;
     },
-    */
+
+    clearCoinsHeld: (state, payload: number) => {
+      state.coinsHeld = 0;
+    },
+
+    updateCoinsHeld: (state, statCoin: string) => {
+      const index = state.testCoins.findIndex((x) => x.name === statCoin);
+      state.testCoins[index].coinsHeld = state.coinsHeld;
+    },
+
 
 
   },

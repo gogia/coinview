@@ -101,7 +101,7 @@ export default Vue.extend({
         coinData.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinData.data.market_data.price_change_percentage_24h,
         priceArr,
-        //0,
+        0,
       );
       console.log("COIN MINTED");
       console.log(coinyBoi);
@@ -162,6 +162,7 @@ export default Vue.extend({
     },
 
     coinUpdate: async function(myCoin: coin) {
+      const coinsHeld = myCoin.coinsHeld;
       const CoinGecko = require('coingecko-api');
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.fetch(
@@ -180,8 +181,8 @@ export default Vue.extend({
         coinDat.data.market_data.current_price.usd,
         coinDat.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinDat.data.market_data.price_change_percentage_24h,
-        priceArr
-        
+        priceArr,
+        coinsHeld
       );
     
       this.$store.commit('updateStats', coinyBoi);
