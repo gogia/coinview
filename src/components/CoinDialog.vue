@@ -23,6 +23,7 @@
             <small>Enter a coin name or symbol (ie: Bitcoin, BTC)</small>
           </v-card-text>
           <v-card-actions>
+
             <v-spacer></v-spacer>
             <v-btn color="#EDC3C5" @click="multiAct" :disabled="!valid" required
               >Add Coin</v-btn
@@ -99,7 +100,8 @@ export default Vue.extend({
         coinData.data.market_data.current_price.usd,
         coinData.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinData.data.market_data.price_change_percentage_24h,
-        priceArr
+        priceArr,
+        //0,
       );
       console.log("COIN MINTED");
       console.log(coinyBoi);
@@ -179,6 +181,7 @@ export default Vue.extend({
         coinDat.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinDat.data.market_data.price_change_percentage_24h,
         priceArr
+        
       );
     
       this.$store.commit('updateStats', coinyBoi);

@@ -90,6 +90,7 @@ export default Vue.extend({
 
     coinOptionMenuOpen() {
       this.$store.commit("coinOptionMenuSet", true);
+      this.$store.commit("coinOptionSelectedSet", this.coinName);
     },
 
     colorizer(item: string) {

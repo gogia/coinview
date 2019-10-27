@@ -10,6 +10,10 @@ export default new Vuex.Store({
     optionMenu: false,
     coinOptionMenu: false,
 
+    coinOptionSelected: "",
+
+    coinsHeld: 0,
+
     daySelect: '1',
 
     testCoins: [] as coin[],
@@ -21,10 +25,14 @@ export default new Vuex.Store({
     optionMenuSet: (state, payload: boolean) => (state.optionMenu = payload),
     coinOptionMenuSet: (state, payload: boolean) => (state.coinOptionMenu = payload), 
 
+    coinOptionSelectedSet: (state, payload: string) => (state.coinOptionSelected = payload),
+    coinOptionSelectedClear: (state) => (state.coinOptionSelected = ""),
+
+
     daySet: (state, payload: string) => (state.daySelect = payload),
 
-    popCoin: (state, pc: coin) => {
-      const index = state.testCoins.findIndex(x => x === pc);
+    popCoin: (state, pc: string) => {
+      const index = state.testCoins.findIndex(x => x.name === pc);
       if (index > -1) {
         state.testCoins.splice(index, 1);
       }

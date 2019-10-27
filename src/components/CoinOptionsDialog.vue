@@ -1,7 +1,14 @@
 <template>
   <v-dialog v-model="$store.state.coinOptionMenu" persistent max-width="600px">
     <v-card dark>
+        <v-layout justify-center>
+        <v-card-title>
+          <span>{{this.$store.state.coinOptionSelected}}</span>
+        </v-card-title>
+        </v-layout>
+
       <v-layout align-center justify-center>
+
         <v-card-text>
           <v-text-field
             color="#EDC3C5"
@@ -13,8 +20,10 @@
         </v-card-text>
       </v-layout>
       <v-card-actions>
+        <v-btn @click="remove">Remove Coin</v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="#EDC3C5" @click="coinOptionOpen">Close</v-btn>
+        <v-btn>Update Coins Held</v-btn>
+        <v-btn color="#EDC3C5" @click="coinOptionClose">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -26,16 +35,21 @@ export default Vue.extend({
   data: () => ({
     coinsHeld: 0,
 
-    inputRules: [
-      (v: any) =>
-        (v >= 0) || "Cannot have negative amount of coins"
-    ]
+    inputRules: [(v: any) => v >= 0 || "Cannot have negative amount of coins"]
   }),
 
   methods: {
-    coinOptionOpen() {
+    coinOptionClose() {
       this.$store.commit("coinOptionMenuSet", false);
+      this.$store.commit("coinOptionSelectedClear");
+    },
+
+    remove(){
+      this.$store.commit("coinOptionMenuSet", false);
+      this.$store.commit("popCoin", this.$store.state.coinOptionSelected);
+      this.$store.commit("coinOptionSelectedClear");       
     }
+
   }
 });
 </script>

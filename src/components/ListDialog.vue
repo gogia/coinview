@@ -32,10 +32,11 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { coin } from "./coinObject";
 export default Vue.extend({
   methods: {
-    coinDelete(item: string) {
-      this.$store.commit("popCoin", item);
+    coinDelete(item: coin) {
+      this.$store.commit("popCoin", item.name);
       //this.interval();
     },
 

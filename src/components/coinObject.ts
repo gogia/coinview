@@ -16,7 +16,7 @@ export class coin {
     hourChange: number,
     dailyChange: number,
     marketDat: number[],
-    //coinsHeld: number;
+    //coinsHeld: number,
   ) {
     this.name = name;
     this.id = id;
