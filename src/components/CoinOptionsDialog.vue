@@ -24,7 +24,7 @@
       <v-card-actions>
         <v-btn @click="remove">Remove Coin</v-btn>
         <v-spacer></v-spacer>
-        <v-btn @click="addCoinsHeld">Update Coins Held</v-btn>
+        <v-btn :disabled="disabler()" @click="addCoinsHeld">Update Coins Held</v-btn>
         <v-btn color="#EDC3C5" @click="coinOptionClose">Close</v-btn>
       </v-card-actions>
     </v-card>
@@ -41,6 +41,16 @@ export default Vue.extend({
   }),
 
   methods: {
+
+
+    disabler(){
+      if(this.coinsHeld < 0 || isNaN(this.coinsHeld)){
+        return true;
+      } else {
+        return false;
+      }
+    },
+
     coinOptionClose() {
       this.$store.commit("coinOptionMenuSet", false);
       this.$store.commit("coinOptionSelectedClear");
