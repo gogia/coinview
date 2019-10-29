@@ -16,6 +16,8 @@
             v-model="coinsHeld"
             :rules="inputRules"
             required
+            v-on:keyup.enter="addCoinsHeld"
+            v-on:keyup.esc="coinOptionClose"
           ></v-text-field>
         </v-card-text>
       </v-layout>

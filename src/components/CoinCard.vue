@@ -19,9 +19,12 @@
       <span class="disable-select" :style="colorizer(this.hourChange)">{{ this.hourChange }}</span>
     </v-layout>
     <v-layout justify-center>
-          <span v-if="getCoinsHeld != 0" class="disable-select">{{getCoinsHeld}}</span>
-          <span v-if="getCoinsHeld != 0" style="margin-left:.5rem; margin-right:.5rem"></span>
-          <span v-if="getCoinsHeld != 0" class="disable-select">{{(getCoinsHeld * Number(this.currentPrice.slice(1))).toFixed(2)}}</span> 
+      <span v-if="getCoinsHeld != 0" class="disable-select">{{getCoinsHeld}}</span>
+      <span v-if="getCoinsHeld != 0" style="margin-left:.5rem; margin-right:.5rem"></span>
+      <span
+        v-if="getCoinsHeld != 0"
+        class="disable-select"
+      >{{(getCoinsHeld * Number(this.currentPrice.slice(1))).toFixed(2)}}</span>
     </v-layout>
     <v-layout>
       <v-card-text>
@@ -46,20 +49,6 @@
 import Vue from "vue";
 import { coin } from "./coinObject";
 
-/*
-  const gradients = [
-    ['#222'],
-    ['#42b3f4'],
-    ['red', 'orange', 'yellow'],
-    ['purple', 'violet'],
-    ['#00c6ff', '#F0F', '#FF0'],
-    ['#f72047', '#ffd200', '#1feaea'],
-  ]
-  */
-
-//If Number(this.hourChange) = 0 css color blue
-//If Number(this.hourChange) > 0 css color green
-//If Number(this.hourChange) < 0 css color red
 export default Vue.extend({
   props: {
     coinName: String,
@@ -67,7 +56,7 @@ export default Vue.extend({
     currentPrice: String,
     hourChange: String,
     dailyChange: String,
-    marketDat: Array,
+    marketDat: Array
   },
 
   data: () => ({
@@ -76,18 +65,17 @@ export default Vue.extend({
     padding: 1,
     lineCap: "round",
     gradient: ["#00c6ff", "#F0F", "#FF0"],
-    //value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
     gradientDirection: "top",
-    //gradients,
     fill: true,
     type: "trend",
     autoLineWidth: false,
-    testArr: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]
   }),
 
   computed: {
-    getCoinsHeld(){
-      let index = this.$store.state.testCoins.findIndex((x: coin) => x.name === this.coinName);
+    getCoinsHeld() {
+      let index = this.$store.state.testCoins.findIndex(
+        (x: coin) => x.name === this.coinName
+      );
       return this.$store.state.testCoins[index].coinsHeld;
     }
   },
@@ -115,7 +103,6 @@ export default Vue.extend({
       }
     },
 
-
     created() {
       //this.testArr = this.marketDat;
     }
@@ -124,12 +111,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-
 .disable-select {
-    user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Firefox */
-   -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 </style>
