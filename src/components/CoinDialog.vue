@@ -23,11 +23,8 @@
             <small>Enter a coin name or symbol (ie: Bitcoin, BTC)</small>
           </v-card-text>
           <v-card-actions>
-
             <v-spacer></v-spacer>
-            <v-btn color="#EDC3C5" @click="multiAct" :disabled="!valid" required
-              >Add Coin</v-btn
-            >
+            <v-btn color="#EDC3C5" @click="multiAct" :disabled="!valid" required>Add Coin</v-btn>
             <!--
               <v-btn
                 color="#EDC3C5"
@@ -68,16 +65,45 @@ export default Vue.extend({
     ]
   }),
 
+  computed: {
+    test() {
+      //console.log("LOCALSTORE");
+      //console.log(JSON.parse(localStorage.Store));
+      //console.log(this.$store.state.updateCoinsFromLocal);
+      if (this.$store.state.updateCoinsFromLocal == true) {
+        console.log("COINS NEED UPDATING");
+        
+        this.$store.state.updateCoins.forEach((element: any) => {
+          this.coinSearch(element);
+        });
+
+        /*
+              this.coinSearch("bitcoin");
+              */
+      }
+      this.$store.commit("updateSet", false);
+    }
+  },
+
+  watch: {
+    test() {
+      console.log("test was called");
+    }
+  },
+
   methods: {
     coinSearch: async function(myCoin: any) {
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.fetch(myCoin.toLowerCase());
-      
+
       // fetchMarketChart(myCoin.toLowerCase(), {days: "max"}) can do 1, 7, 14 or max
       // can iterate over this list and grab a list of numbers for data.
       // starts from last date and moves to current. this is good for how we can put it into an array.
-      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.toLowerCase(), {days: this.$store.state.daySelect});
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(
+        myCoin.toLowerCase(),
+        { days: this.$store.state.daySelect }
+      );
       let priceArr = this.marketData(priceLog);
       //console.log("TICKERS");
       //console.log(priceLog);
@@ -92,7 +118,7 @@ export default Vue.extend({
     },
 
     // only coinDat should be passed in
-    coinMint(coinData: any, priceArr: number []): coin {
+    coinMint(coinData: any, priceArr: number[]): coin {
       const coinyBoi = new coin(
         coinData.data.name,
         coinData.data.id,
@@ -101,7 +127,7 @@ export default Vue.extend({
         coinData.data.market_data.price_change_percentage_1h_in_currency.usd,
         coinData.data.market_data.price_change_percentage_24h,
         priceArr,
-        0,
+        0
       );
       console.log("COIN MINTED");
       console.log(coinyBoi);
@@ -110,13 +136,13 @@ export default Vue.extend({
     },
 
     // youll have to add arguments to this for date and shit
-    marketData(priceLog: any){
-      var priceArr:number[] = [];
+    marketData(priceLog: any) {
+      var priceArr: number[] = [];
       //console.log(priceArr);
       //console.log(priceLog);
-      
+
       priceLog.data.prices.forEach((element: any) => {
-        priceArr.push(element[1]);        
+        priceArr.push(element[1]);
       });
       //console.log("THIS IS THE PRICE ARRAY");
       //console.log(priceArr);
@@ -153,7 +179,6 @@ export default Vue.extend({
       this.inputMessage = "";
     },
 
-    
     //Test Code
     updateWrapper: async function() {
       this.$store.state.testCoins.forEach((element: coin) => {
@@ -163,15 +188,17 @@ export default Vue.extend({
 
     coinUpdate: async function(myCoin: coin) {
       const coinsHeld = myCoin.coinsHeld;
-      const CoinGecko = require('coingecko-api');
+      const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.fetch(
-        myCoin.id.toLowerCase().toString(),
+        myCoin.id.toLowerCase().toString()
       );
-      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.id, {days: this.$store.state.daySelect});
+      const priceLog = await CoinGeckoClient.coins.fetchMarketChart(myCoin.id, {
+        days: this.$store.state.daySelect
+      });
       let priceArr = this.marketData(priceLog);
       const index = this.$store.state.testCoins.findIndex(
-        (x: coin) => x.id === myCoin.id,
+        (x: coin) => x.id === myCoin.id
       );
 
       const coinyBoi = new coin(
@@ -184,8 +211,8 @@ export default Vue.extend({
         priceArr,
         coinsHeld
       );
-    
-      this.$store.commit('updateStats', coinyBoi);
+
+      this.$store.commit("updateStats", coinyBoi);
       console.log("STATS UPDATED");
       console.log(coinyBoi);
     },
@@ -194,8 +221,8 @@ export default Vue.extend({
     //THIS CODE NEEDS TO BE REWRITTEN MAKES TOO MANY API CALLS!
     optimizeTime(): number {
       let time = 0;
-      time = Math.floor((90*this.$store.state.testCoins.length)/60) * 1750;
-      return time ;
+      time = Math.floor((90 * this.$store.state.testCoins.length) / 60) * 1750;
+      return time;
       //console.log(`CALLS PER MINUTE: ${callsPerMinute}`);
     },
 
@@ -216,9 +243,8 @@ export default Vue.extend({
           break;
         }
       }
-      },
+    },
     //END TEST CODE
-    
 
     multiAct() {
       this.coinSearch(this.inputMessage);
@@ -255,8 +281,6 @@ export default Vue.extend({
       const msg = ["Coin Name", "Invalid Coin", "Duplicate Coin"];
       return msg[textCode];
     }
-
-
   }
 });
 </script>

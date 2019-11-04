@@ -104,7 +104,6 @@ export default Vue.extend({
     },
 
     created() {
-      //this.testArr = this.marketDat;
     }
   }
 });

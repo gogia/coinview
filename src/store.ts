@@ -3,8 +3,16 @@ import Vuex from "vuex";
 import { coin } from "./components/coinObject";
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const saveCoins = (stor: any) => {
+  stor.subscribe((mutation: any, state: any) => {
+      localStorage.setItem('Store', JSON.stringify(state));
+  });
+};
+
+export const store = new Vuex.Store({
   state: {
+    updateCoinsFromLocal: false,
+
     coinMenu: false,
     listMenu: false,
     optionMenu: false,
@@ -18,6 +26,8 @@ export default new Vuex.Store({
 
     testCoins: [] as coin[],
 
+    updateCoins: [] as string[],
+
   },
   mutations: {
     menuSet: (state, payload: boolean) => (state.coinMenu = payload),
@@ -28,6 +38,7 @@ export default new Vuex.Store({
     coinOptionSelectedSet: (state, payload: string) => (state.coinOptionSelected = payload),
     coinOptionSelectedClear: (state) => (state.coinOptionSelected = ""),
 
+    updateSet: (state, payload: boolean) => (state.updateCoinsFromLocal = payload),
 
     daySet: (state, payload: string) => (state.daySelect = payload),
 
@@ -40,6 +51,10 @@ export default new Vuex.Store({
 
     pushCoin: (state, newCoin: coin) => {
       state.testCoins.push(newCoin);
+    },
+
+    pushUpdateCoin: (state, payload: string) =>{
+      state.updateCoins.push(payload);
     },
 
     updateStats: (state, statCoin: coin) => {
@@ -64,8 +79,7 @@ export default new Vuex.Store({
       state.testCoins[index].coinsHeld = state.coinsHeld;
     },
 
-
-
   },
+  plugins: [saveCoins],
   actions: {}
 });
