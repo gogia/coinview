@@ -61,7 +61,7 @@ export default Vue.extend({
 
     inputRules: [
       (v: any) =>
-        (v && v.length >= 3) || "Name must be greater than 3 characters"
+        (v && v.length >= 2) || "Name must be greater than 2 characters"
     ]
   }),
 
@@ -72,14 +72,10 @@ export default Vue.extend({
       //console.log(this.$store.state.updateCoinsFromLocal);
       if (this.$store.state.updateCoinsFromLocal == true) {
         console.log("COINS NEED UPDATING");
-        
-        this.$store.state.updateCoins.forEach((element: any) => {
-          this.coinSearch(element);
-        });
 
-        /*
-              this.coinSearch("bitcoin");
-              */
+        this.$store.state.updateCoins.forEach((element: any) => {
+          this.newCoinSearch(element);
+        });
       }
       this.$store.commit("updateSet", false);
     }
@@ -92,29 +88,22 @@ export default Vue.extend({
   },
 
   methods: {
-    coinSearch: async function(myCoin: any) {
+    newCoinSearch: async function(myCoin: any) {
+      myCoin = myCoin.toLowerCase();
+      console.log(myCoin);
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
-      const coinDat = await CoinGeckoClient.coins.fetch(myCoin.toLowerCase());
+      const coinDat = await CoinGeckoClient.coins
+        .fetch(myCoin)
+        .then(null, this.coinVert(myCoin));
 
-      // fetchMarketChart(myCoin.toLowerCase(), {days: "max"}) can do 1, 7, 14 or max
-      // can iterate over this list and grab a list of numbers for data.
-      // starts from last date and moves to current. this is good for how we can put it into an array.
       const priceLog = await CoinGeckoClient.coins.fetchMarketChart(
-        myCoin.toLowerCase(),
+        myCoin,
         { days: this.$store.state.daySelect }
       );
       let priceArr = this.marketData(priceLog);
-      //console.log("TICKERS");
-      //console.log(priceLog);
-      if (coinDat.success === false) {
-        this.coinVert(myCoin);
-        this.inputMessage = "";
-        this.resetValidation();
-      } else {
-        const coinyBoi = this.coinMint(coinDat, priceArr);
-        this.dupeCheck(coinyBoi);
-      }
+      const coinyBoi = this.coinMint(coinDat, priceArr);
+      this.dupeCheck(coinyBoi);
     },
 
     // only coinDat should be passed in
@@ -155,7 +144,6 @@ export default Vue.extend({
         !this.$store.state.testCoins.some((item: any) => item.id === myCoin.id)
       ) {
         this.$store.commit("pushCoin", myCoin);
-        console.log(myCoin);
         this.interval();
       } else {
         this.textCode = 2;
@@ -164,17 +152,20 @@ export default Vue.extend({
       this.resetValidation();
     },
 
+
+
     coinVert: async function(mySymbol: string) {
       mySymbol = mySymbol.toLowerCase();
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
       const coinDat = await CoinGeckoClient.coins.list();
-
+      console.log(coinDat);
       if (!coinDat.data.find((x: any) => x.symbol === mySymbol)) {
         this.textCode = 1;
       } else {
         const thing = coinDat.data.find((x: any) => x.symbol === mySymbol);
-        this.coinSearch(thing.id);
+        console.log(thing.id);
+        this.newCoinSearch(thing.id);
       }
       this.inputMessage = "";
     },
@@ -187,6 +178,7 @@ export default Vue.extend({
     },
 
     coinUpdate: async function(myCoin: coin) {
+      console.log(`${myCoin.name} UPDATED!`);
       const coinsHeld = myCoin.coinsHeld;
       const CoinGecko = require("coingecko-api");
       const CoinGeckoClient = new CoinGecko();
@@ -213,8 +205,8 @@ export default Vue.extend({
       );
 
       this.$store.commit("updateStats", coinyBoi);
-      console.log("STATS UPDATED");
-      console.log(coinyBoi);
+      //console.log("STATS UPDATED");
+      //console.log(coinyBoi);
     },
 
     // Calculates an update time for setInterval that doesn't break API rate limiting rules.
@@ -247,7 +239,7 @@ export default Vue.extend({
     //END TEST CODE
 
     multiAct() {
-      this.coinSearch(this.inputMessage);
+      this.newCoinSearch(this.inputMessage);
       this.resetValidation();
     },
 
@@ -278,7 +270,7 @@ export default Vue.extend({
     },
 
     headerNamer(textCode: number): string {
-      const msg = ["Coin Name", "Invalid Coin", "Duplicate Coin"];
+      const msg = ["Coin Name", "Coin Name", "Duplicate Coin"];
       return msg[textCode];
     }
   }

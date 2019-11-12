@@ -24,7 +24,7 @@
       <span
         v-if="getCoinsHeld != 0"
         class="disable-select"
-      >{{(getCoinsHeld * Number(this.currentPrice.slice(1))).toFixed(2)}}</span>
+      >${{(getCoinsHeld * Number(this.currentPrice.slice(1))).toFixed(2)}}</span>
     </v-layout>
     <v-layout>
       <v-card-text>
